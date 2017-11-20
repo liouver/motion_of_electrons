@@ -12,6 +12,11 @@ c = 2.99792458 * 10**8  # m/s
 m = 0.5109989461 * 10**6  # eV/c**2
 e_m = c**2 / m  # e/m = m*m/s*s*V
 
+Ek_0 = 0.3  # MeV
+gamma_0 = Ek_0 / 0.5109989461 + 1
+R2 = 0.14  # m
+R1 = 0.1  # m
+
 
 def motion_equation(s, x, E_r):
     r, dr, theta, dtheta = s.tolist()
@@ -28,10 +33,8 @@ def motion_equation(s, x, E_r):
 
 
 def main():
-    Ek_0 = 0.3  # MeV
-    gamma_0 = Ek_0 / 0.5109989461 + 1
     vel = c * np.sqrt(1 - 1 / gamma_0**2)  # velocity, m/s
-    r_0 = 0.1  # m
+    r_0 = 0.12  # m
     dr_0 = 0  # m/s
     theta_0 = 0  # rad
     dtheta_0 = 1.0 * vel / r_0  # rad/s
