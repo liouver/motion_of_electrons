@@ -29,7 +29,10 @@ def motion_equation(s, x, E_r):
     eq2 = dgamma * r * dtheta + 2 * gamma * dr * dtheta + gamma * r * d2theta
     result_sol = solve([eq1, eq2], [d2r, d2theta])
     [d2r, d2theta] = result_sol.values()
-    return [dr, d2r, dtheta, d2theta]
+    if R1 < r < R2:
+        return [dr, d2r, dtheta, d2theta]
+    else:
+        raise ValueError('Out of the range, electron reaches to the plate')
 
 
 def main():
