@@ -1,5 +1,5 @@
-# solve the motion of electrons with low energy (gamma = 1) in radial E
-# (cylindrical coordinates)
+'''solve the motion of electrons with low energy (gamma = 1) in radial E
+    (cylindrical coordinates)'''
 from scipy.integrate import odeint
 import numpy as np
 from sympy import *
