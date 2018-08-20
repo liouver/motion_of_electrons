@@ -24,7 +24,7 @@ ax1.set_xlabel('Electron kinetic energy (keV)', fontsize=14)
 ax1.set_ylabel('Spin rotation degree for E-dipole ($^\circ$)',
                color='b', fontsize=14)
 ax1.tick_params('y', colors='b')
-ax1.tick_params(which='both', direction='in', labelsize=12,)
+ax1.tick_params(which='both', direction='in', labelsize=12)
 
 ax2 = ax1.twinx()
 ax2.semilogx(Ek, phi_B, 'r', linewidth=2.5)
@@ -38,3 +38,4 @@ plt.title('Spin rotation degree for beam bending 90$^\circ$', fontsize=16)
 
 fig1.tight_layout()
 plt.show()
+plt.savefig('spin_rotation.pdf', format='pdf')

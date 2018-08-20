@@ -1,3 +1,10 @@
+'''eletrical dipole spin rotator rotate spin direction 90 degree for E_k =300
+    keV. the rotation of spin is not 90 degree when energy is not 300 keV. use
+    wien filter to offset the spin rotation loss when energy is not 300 keV.
+    This code calculate the spin rotation degree & E for spin rotator, and the
+    E & B for wien filter at different energy
+    Created by W. Liu @ Nov, 2017'''
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -22,8 +29,8 @@ ax1.set_xlim([190, 410])
 ax1.set_ylim([-6, 8])
 ax1.grid()
 # ax1.xaxis.grid()
-ax1.set_xlabel('Electron kinetic energy (keV)', fontsize=14)
-ax1.set_ylabel('$B\cdot l$ ($Gauss\cdot m$)', color='b', fontsize=14)
+ax1.set_xlabel('Electron beam energy (keV)', fontsize=14)
+ax1.set_ylabel(r'$B\cdot L$ ($Gauss\cdot m$)', color='b', fontsize=14)
 ax1.tick_params('y', colors='b')
 ax1.tick_params('both', direction='in', labelsize=12)
 
@@ -31,10 +38,11 @@ ax2 = ax1.twinx()
 ax2.plot(Ek, E_l / 10**3, 'r', linewidth=2.5)
 ax2.set_ylim([-150, 200])
 ax2.yaxis.grid()
-ax2.set_ylabel('$E\cdot l$ (kV)', color='r', fontsize=14)
+ax2.set_ylabel(r'$E\cdot L$ (kV)', color='r', fontsize=14)
 ax2.tick_params('y', colors='r', direction='in', labelsize=12)
-plt.title('magnetic and electric field for wien filter')
+# plt.title('magnetic and electric field for wien filter')
 fig1.tight_layout()
+plt.savefig('wien_filter_offset_B_E.pdf', format='pdf')
 
 fig2, ax3 = plt.subplots()
 ax3.plot(Ek, phi * 180 / pi, 'b', linewidth=2.5)
@@ -42,8 +50,8 @@ ax3.set_xlim([190, 410])
 ax3.set_ylim([78, 104])
 ax3.set_yticks([78, 82, 86, 90, 94, 98, 102])
 ax3.grid()
-ax3.set_xlabel('Electron kinetic energy (keV)', fontsize=14)
-ax3.set_ylabel('Spin degree ($^\circ$)', color='b', fontsize=14)
+ax3.set_xlabel('Electron beam energy (keV)', fontsize=14)
+ax3.set_ylabel(r'Spin degree ($^\circ$)', color='b', fontsize=14)
 ax3.tick_params('y', colors='b')
 ax3.tick_params('both', direction='in', labelsize=12)
 
@@ -52,9 +60,10 @@ ax4.plot(Ek, E_R / 10**3, 'r', linewidth=2.5)
 ax4.set_ylim([330, 645])
 ax4.set_yticks([320, 370, 420, 470, 520, 570, 620])
 ax4.yaxis.grid()
-ax4.set_ylabel('$E\cdot R$ (kV)', color='r', fontsize=14)
+ax4.set_ylabel(r'$E\cdot R$ (kV)', color='r', fontsize=14)
 ax4.tick_params('y', colors='r', direction='in', labelsize=12)
-plt.title('spin rotation degree and electric field for dipole')
+# plt.title('spin rotation angle and electric field for dipole')
 fig2.tight_layout()
+plt.savefig('dipole_spin_angle_ER.pdf', format='pdf')
 
 plt.show()
